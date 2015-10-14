@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class playButton : MonoBehaviour
@@ -18,8 +18,6 @@ public class playButton : MonoBehaviour
 
     public void onClick()
     {
-        titleScreen.isPlaying = true;
-        GameObject.Find("title").active = false;
-        GameObject.Find("uiPlayButton").active = false;
+		Application.LoadLevel("Level1");
     }
 }

@@ -12,10 +12,6 @@ public class ballMover : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
         plane.SetNormalAndPosition(Camera.main.transform.forward, transform.position);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float dist;
@@ -25,10 +21,6 @@ public class ballMover : MonoBehaviour {
 
     void OnMouseDrag()
     {
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float dist;
         plane.Raycast(ray, out dist);
@@ -39,22 +31,11 @@ public class ballMover : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
         velocity = Vector3.zero;
-	
 	}
-
-
 	
 	// Update is called once per frame
 	void Update () {
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
         float step = .08F;
 
         if (Input.GetKey("left")){
@@ -73,10 +54,6 @@ public class ballMover : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
         if (col.gameObject.tag == "bullet")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);

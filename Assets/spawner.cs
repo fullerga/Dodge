@@ -14,12 +14,6 @@ public class spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
-
         timer += Time.deltaTime;
         if (timer > 1)
         {
@@ -30,12 +24,9 @@ public class spawner : MonoBehaviour {
 
     public void spawn()
     {
-
         float f = Random.Range(0, 2*Mathf.PI);
-
         float x = Mathf.Cos(f)*10;
         float y = Mathf.Sin(f)*10;
-
         Instantiate(square, new Vector2(x, y), Quaternion.identity);
     }
 }

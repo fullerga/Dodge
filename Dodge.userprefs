@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\spawner.cs">
+    <Files>
+      <File FileName="Assets\playButton.cs" Line="22" Column="1" />
+      <File FileName="Assets\ballMover.cs" Line="57" Column="1" />
+      <File FileName="Assets\bulletMove.cs" Line="30" Column="1" />
+      <File FileName="Assets\explosion.cs" Line="22" Column="2" />
+      <File FileName="Assets\spawner.cs" Line="30" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

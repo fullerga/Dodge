@@ -8,20 +8,10 @@ public class explosion : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
     }
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (!titleScreen.isPlaying)
-        {
-            return;
-        }
-
         frame += 1;
 
         if (frame >= 60)
