@@ -13,10 +13,10 @@ public class explosion : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         frame += 1;
-
         if (frame >= 60)
         {
             Destroy(gameObject);
+			Application.LoadLevel("MainMenu");
         }
 	}
 }
