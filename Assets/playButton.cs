@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class playButton : MonoBehaviour
@@ -16,8 +16,12 @@ public class playButton : MonoBehaviour
 
     }
 
-    public void onClick()
+    void OnMouseDown()
     {
-		Application.LoadLevel("Level1");
+        gameSettings.isPlaying = true;
+        gameSettings.isMainScreen = false;
+        gameSettings.needGameScreen = true;
+        Destroy(GameObject.Find("mainScreen(Clone)"));
+        Destroy(gameObject);
     }
 }

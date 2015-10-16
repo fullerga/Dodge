@@ -12,11 +12,15 @@ public class explosion : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         frame += 1;
+
         if (frame >= 60)
         {
+            gameSettings.isDead = true;
+            gameSettings.needDeadScreen = true;
+            Destroy(GameObject.Find("gameScreen(Clone)"));
             Destroy(gameObject);
-			Application.LoadLevel("MainMenu");
         }
 	}
 }

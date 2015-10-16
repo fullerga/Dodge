@@ -68,12 +68,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ballMover.cs" />
     <Compile Include="Assets\bulletMove.cs" />
+    <Compile Include="Assets\deathScreen.cs" />
     <Compile Include="Assets\explosion.cs" />
+    <Compile Include="Assets\gameScreen.cs" />
+    <Compile Include="Assets\gameSettings.cs" />
+    <Compile Include="Assets\mainMenuButton.cs" />
+    <Compile Include="Assets\mainScreen.cs" />
+    <Compile Include="Assets\playAgainButton.cs" />
     <Compile Include="Assets\playButton.cs" />
+    <Compile Include="Assets\player.cs" />
     <Compile Include="Assets\spawner.cs" />
-    <Compile Include="Assets\titleScreen.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

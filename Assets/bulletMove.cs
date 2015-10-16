@@ -5,7 +5,14 @@ public class bulletMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        if (!gameSettings.isPlaying)
+        {
+            return;
+        }
+
         Vector3 current = transform.position;
+
         float offset = Random.Range(-30, 30);
 
         if(current.x<0)
@@ -16,6 +23,12 @@ public class bulletMove : MonoBehaviour {
 
     void Update()
     {
+
+        if (!gameSettings.isPlaying)
+        {
+            return;
+        }
+
         float movementSpeed = 2F;
         transform.position += transform.up * Time.deltaTime * movementSpeed;
 
