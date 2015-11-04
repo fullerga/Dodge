@@ -14,7 +14,8 @@ public class bulletMove : MonoBehaviour {
 
     void Update()
     {
-        float movementSpeed = 2F;
+		float movementSpeed = getSpeed ();
+		print (movementSpeed);
         transform.position += transform.up * Time.deltaTime * movementSpeed;
         int range = 10;
         if(transform.position.x>range || transform.position.x < -range || transform.position.y > range || transform.position.y < -range)
@@ -22,4 +23,14 @@ public class bulletMove : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+	float getSpeed()
+	{
+		print (powerUpManager.isFast);
+		if (powerUpManager.isSlow)
+			return 1F;
+		if (powerUpManager.isFast)
+			return 3F;
+		return 2F;
+	}
 }

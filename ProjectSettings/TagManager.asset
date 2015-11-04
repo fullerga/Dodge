@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - bullet
-  - deathScreen
+  - enemy
+  - invincible
+  - reverse
+  - faster
+  - slower
+  - health
   layers:
   - Default
   - TransparentFX
