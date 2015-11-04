@@ -9,6 +9,11 @@ public class explosion : MonoBehaviour {
         frame += 1;
         if (frame >= 60)
         {
+            Destroy(GameObject.Find("health"));
+            Destroy(GameObject.Find("healthBarEmpty"));
+            Destroy(GameObject.Find("Canvas"));
+            Destroy(GameObject.Find("EventSystem"));
+            Destroy(GameObject.Find("level"));
             Destroy(gameObject);
 			Application.LoadLevel("GameOver");
         }

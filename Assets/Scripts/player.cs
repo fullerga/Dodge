@@ -9,6 +9,14 @@ public class player : MonoBehaviour {
     private Vector3 v3Offset;
     private Plane plane;
 
+    healthBar hb;
+
+    void Start ()
+    {
+        hb = GameObject.Find("health").GetComponent<healthBar>();
+    }
+
+
     void OnMouseDown()
     {
         plane.SetNormalAndPosition(Camera.main.transform.forward, transform.position);
@@ -46,10 +54,14 @@ public class player : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "bullet")
+        if (col.gameObject.tag == "enemy")
         {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            hb.subHealth();
+            if (hb.isDead())
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
     }
 }
