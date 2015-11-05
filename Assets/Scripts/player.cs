@@ -9,15 +9,11 @@ public class player : MonoBehaviour {
     private Vector3 v3Offset;
     private Plane plane;
 	private bool isReverse;
-
-	void Start () {
-		isReverse = false;
-	}
-
-    healthBar hb;
+	private healthBar hb;
 
     void Start ()
     {
+		isReverse = false;
         hb = GameObject.Find("health").GetComponent<healthBar>();
     }
 
