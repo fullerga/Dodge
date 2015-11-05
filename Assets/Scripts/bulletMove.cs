@@ -3,7 +3,14 @@ using System.Collections;
 
 public class bulletMove : MonoBehaviour {
 
-	void Start () {
+    healthBar hb;
+    spawnerLevel1 spawner;
+
+    void Start () {
+
+        hb = GameObject.Find("health").GetComponent<healthBar>();
+        spawner = GameObject.Find("Spawner").GetComponent<spawnerLevel1>();
+
         Vector3 current = transform.position;
         float offset = Random.Range(-30, 30);
         if(current.x<0)
@@ -17,10 +24,18 @@ public class bulletMove : MonoBehaviour {
 		float movementSpeed = getSpeed ();
 		print (movementSpeed);
         transform.position += transform.up * Time.deltaTime * movementSpeed;
-        int range = 10;
-        if(transform.position.x>range || transform.position.x < -range || transform.position.y > range || transform.position.y < -range)
+        int xRange = 9;
+        int yRange = 9;
+        if (transform.position.x>xRange || transform.position.x < -xRange || transform.position.y > yRange || transform.position.y < -yRange)
         {
             Destroy(gameObject);
+
+            spawner.enemyDied();
+
+            if (!hb.isDead())
+            {
+                gameStats.points++;
+            }
         }
     }
 

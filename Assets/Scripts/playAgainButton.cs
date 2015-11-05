@@ -5,6 +5,6 @@ public class playAgainButton : MonoBehaviour {
 
 	void OnMouseDown()
     {
-		Application.LoadLevel("Level1");
+        Application.LoadLevel("Level1");
     }
 }

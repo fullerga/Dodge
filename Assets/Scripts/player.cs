@@ -14,6 +14,14 @@ public class player : MonoBehaviour {
 		isReverse = false;
 	}
 
+    healthBar hb;
+
+    void Start ()
+    {
+        hb = GameObject.Find("health").GetComponent<healthBar>();
+    }
+
+
     void OnMouseDown()
     {
         plane.SetNormalAndPosition(Camera.main.transform.forward, transform.position);
@@ -36,8 +44,12 @@ public class player : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
 		if (col.gameObject.tag == "enemy" && !powerUpManager.isInvincible) {
-			Instantiate (explosion, transform.position, Quaternion.identity);
-			Destroy (gameObject);
+			hb.subHealth();
+            if (hb.isDead())
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
 		} else if (col.gameObject.tag == "enemy") {
 			Destroy (col.gameObject);
 		} else {
