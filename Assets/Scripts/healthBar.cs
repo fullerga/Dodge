@@ -1,34 +1,36 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class healthBar : MonoBehaviour {
+public class HealthBar : MonoBehaviour {
 
-    static float width = 7.8f;
-    static int maxHealth = 5;
-    float health;
+    readonly float Width = 7.8f;
+    readonly int MaxHealth = 5;
+    int Health;
+    Vector3 IntialScale;
+    Vector3 IntialPosition;
 
-	// Use this for initialization
 	void Start () {
-        health = maxHealth;
+        Health = MaxHealth;
+	    IntialScale = transform.localScale;
+	    IntialPosition = transform.localPosition;
 	}
 
-    public void subHealth()
+    public void IncHealth()
     {
-        health -= 1;
-        transform.localScale = new Vector3(health / maxHealth, transform.localScale.y, transform.localScale.z);
-        transform.position = new Vector3(transform.position.x - width / (maxHealth * 2), transform.position.y, transform.position.z);
-    }
-	
-	// Update is called once per frame
-	void Update () {
+        Health = MaxHealth;
+        transform.localScale = IntialScale;
+        transform.position = IntialPosition;
     }
 
-    public bool isDead()
+    public void SubHealth()
     {
-        if (health == 0)
-        {
-            return true;
-        }
-        return false;
+        Health -= 1;
+        transform.localScale = new Vector3((float)Health / MaxHealth, transform.localScale.y, transform.localScale.z);
+        transform.position = new Vector3(transform.position.x - Width / (MaxHealth * 2), transform.position.y,
+            transform.position.z);
+    }
+
+    public bool IsDead()
+    {
+        return Health == 0;
     }
 }

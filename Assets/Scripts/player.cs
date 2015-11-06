@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class player : MonoBehaviour {
-
+public class Player : MonoBehaviour
+{
     public GameObject explosion;
 
     private float dist;
     private Vector3 v3Offset;
     private Plane plane;
-	private bool isReverse;
-	private healthBar hb;
+    private HealthBar healthBar;
 
-    void Start ()
+    void Start()
     {
-		isReverse = false;
-        hb = GameObject.Find("health").GetComponent<healthBar>();
+        healthBar = GameObject.Find("health").GetComponent<HealthBar>();
     }
 
 
@@ -28,29 +25,42 @@ public class player : MonoBehaviour {
     }
 
     void OnMouseDrag()
-    { 
-		var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-		float dist;
-		plane.Raycast (ray, out dist);
-		var v3Pos = ray.GetPoint (dist);
-		v3Pos = powerUpManager.isReverse ? -v3Pos : v3Pos;
-		transform.position = v3Pos + v3Offset;
-	}
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float dist;
+        plane.Raycast(ray, out dist);
+        var v3Pos = ray.GetPoint(dist);
+        v3Pos = PowerUpManager.IsReverse ? -v3Pos : v3Pos;
+        transform.position = v3Pos + v3Offset;
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-		if (col.gameObject.tag == "enemy" && !powerUpManager.isInvincible) {
-			hb.subHealth();
-            if (hb.isDead())
-            {
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-		} else if (col.gameObject.tag == "enemy") {
-			Destroy (col.gameObject);
-		} else {
-			powerUpManager.SetPowerUp(col.gameObject.tag);
-			Destroy (col.gameObject);
-		}
+        if (col.gameObject.tag == "enemy")
+            HandleCollisionWithEnemy(col);
+        else
+            HandleCollisionWithPowerup(col);
+    }
+
+    private void HandleCollisionWithEnemy(Collision2D col)
+    {
+        if (PowerUpManager.IsInvincible)
+            Destroy(col.gameObject);
+        else
+            HandlePlayerHit();
+    }
+
+    private void HandlePlayerHit()
+    {
+        healthBar.SubHealth();
+        if (!healthBar.IsDead()) return;
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    private static void HandleCollisionWithPowerup(Collision2D col)
+    {
+        PowerUpManager.SetPowerUp(col.gameObject.tag);
+        Destroy(col.gameObject);
     }
 }

@@ -3,12 +3,12 @@ using System.Collections;
 
 public class enemy2Move : MonoBehaviour{
 
-    healthBar hb;
+    HealthBar hb;
     spawnerLevel2 spawner;
 
     void Start(){
 
-        hb = GameObject.Find("health").GetComponent<healthBar>();
+        hb = GameObject.Find("health").GetComponent<HealthBar>();
         spawner = GameObject.Find("spawner2").GetComponent<spawnerLevel2>();
 
         Vector3 current = transform.position;
@@ -29,10 +29,8 @@ public class enemy2Move : MonoBehaviour{
         if (transform.position.x > xRange || transform.position.x < -xRange || transform.position.y > yRange || transform.position.y < -yRange)
         {
             Destroy(gameObject);
-
             spawner.enemyDied();
-
-            if (!hb.isDead())
+            if (!hb.IsDead())
             {
                 gameStats.points++;
             }

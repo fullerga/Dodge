@@ -1,55 +1,66 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class powerUpManager : MonoBehaviour {
-	public static bool isInvincible;
-	public static bool isSlow;
-	public static bool isFast;
-	public static bool isReverse;
+public class PowerUpManager : MonoBehaviour
+{
+    public static bool IsInvincible;
+    public static bool IsSlow;
+    public static bool IsFast;
+    public static bool IsReverse;
 
-	static float powerUpStartTime;
-	
-	void Start () {
-		Reset ();
-	}
-	
-	void Update () {
-		if (PowerUpOver ()) {
-			Reset ();
-		}
-	}
-	
-	public static void SetPowerUp(string tag){
-		Reset ();
-		switch (tag) {
-		case "invincible" : 
-			isInvincible = true;
-			break;
-		case "slower" : 
-			isSlow = true;
-			break;
-		case "faster" : 
-			isFast = true;
-			break;
-		case "reverse" : 
-			isReverse = true;
-			break;
-		default: 
-			throw new UnityException("Could not find powerup for " + tag);
-		};
-	}
-	
-	static void Reset(){
-		powerUpStartTime = Time.time;
-		isInvincible = false;
-		isSlow = false;
-		isFast = false;
-		isReverse = false;
-	}
-	
-	static bool PowerUpOver(){
-		var diff = Time.time - powerUpStartTime;
-		int seconds =  (int)diff % 60;
-		return seconds >= 10;
-	}
+    static float powerUpStartTime;
+    const int PowerUpTime = 10;
+    static HealthBar healthBar;
+
+    void Start()
+    {
+        Reset();
+        healthBar = GameObject.Find("health").GetComponent<HealthBar>();
+    }
+
+    void Update()
+    {
+        if (PowerUpOver())
+            Reset();
+    }
+
+    public static void SetPowerUp(string tag)
+    {
+        Reset();
+        switch (tag)
+        {
+            case "invincible":
+                IsInvincible = true;
+                break;
+            case "slower":
+                IsSlow = true;
+                break;
+            case "faster":
+                IsFast = true;
+                break;
+            case "reverse":
+                IsReverse = true;
+                break;
+            case "health":
+                healthBar.IncHealth();
+                break;
+            default:
+                throw new UnityException("Could not find powerup for " + tag);
+        };
+    }
+
+    static void Reset()
+    {
+        powerUpStartTime = Time.time;
+        IsInvincible = false;
+        IsSlow = false;
+        IsFast = false;
+        IsReverse = false;
+    }
+
+    static bool PowerUpOver()
+    {
+        var diff = Time.time - powerUpStartTime;
+        var seconds = (int)diff % 60;
+        return seconds >= PowerUpTime;
+    }
 }
