@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class spawnerLevel2 : MonoBehaviour
+public class spawnerLevel2 : MonoBehaviour, Spawner
 {
 
     int numEnemies = 8;
@@ -49,7 +49,7 @@ public class spawnerLevel2 : MonoBehaviour
         Instantiate(enemy2, new Vector2(x, y), Quaternion.identity);
     }
 
-    public void enemyDied()
+    public void EnemyDied()
     {
         numEnemDead++;
     }

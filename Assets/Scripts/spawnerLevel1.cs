@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class spawnerLevel1 : MonoBehaviour {
+public class spawnerLevel1 : MonoBehaviour, Spawner
+{
 
     int numEnemies = 4;
     int numEnemCreated = 0;
@@ -10,12 +11,14 @@ public class spawnerLevel1 : MonoBehaviour {
     public GameObject square;
     float timer = 0;
 
-    void Start() {
+    void Start()
+    {
     }
 
-	void Update () {
+    void Update()
+    {
         timer += Time.deltaTime;
-        if (timer > 1 && numEnemCreated<numEnemies)
+        if (timer > 1 && numEnemCreated < numEnemies)
         {
             spawn();
             timer = 0;
@@ -35,19 +38,19 @@ public class spawnerLevel1 : MonoBehaviour {
 
             Application.LoadLevel("Level2");
         }
-	}
+    }
 
     public void spawn()
     {
 
         int rad = 9;
-        float f = Random.Range(0, 2*Mathf.PI);
-        float x = Mathf.Cos(f)*rad;
-        float y = Mathf.Sin(f)*rad;
+        float f = Random.Range(0, 2 * Mathf.PI);
+        float x = Mathf.Cos(f) * rad;
+        float y = Mathf.Sin(f) * rad;
         Instantiate(square, new Vector2(x, y), Quaternion.identity);
     }
 
-    public void enemyDied()
+    public void EnemyDied()
     {
         numEnemDead++;
     }

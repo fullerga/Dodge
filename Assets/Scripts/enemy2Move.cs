@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class enemy2Move : MonoBehaviour{
 
@@ -29,7 +28,7 @@ public class enemy2Move : MonoBehaviour{
         if (transform.position.x > xRange || transform.position.x < -xRange || transform.position.y > yRange || transform.position.y < -yRange)
         {
             Destroy(gameObject);
-            spawner.enemyDied();
+            spawner.EnemyDied();
             if (!hb.IsDead())
             {
                 gameStats.points++;
