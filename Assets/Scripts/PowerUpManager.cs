@@ -15,27 +15,31 @@ public class PowerUpManager : MonoBehaviour
     const int PowerUpTime = 10;
     static Animation Animation;
     static Text AnimationText;
+    static Text TimeText;
     static PowerUp[] Powerups;
+    static bool PowerupActive;
 
     void Start()
     {
-        Reset();
         HealthBar = GameObject.Find("health").GetComponent<HealthBar>();
         Animation = GameObject.Find("PowerupText").GetComponent<Animation>();
         AnimationText = GameObject.Find("PowerupText").GetComponent<Text>();
+        TimeText = GameObject.Find("PowerupTimeText").GetComponent<Text>();
         var powerupTypes = AllPowerUps().Where(IsPowerUp);
         Powerups = powerupTypes.Select(type => (PowerUp)type.GetConstructor(Type.EmptyTypes).Invoke(null)).ToArray();
+        Reset();
     }
 
     void Update()
     {
-        if (PowerUpOver())
+        if (PowerupActive && PowerUpOver())
             Reset();
     }
 
     public static void SetPowerUp(string tag)
     {
         Reset();
+        PowerupActive = true;
         var powerUps = Powerups.Where(p => p.Tag == tag).ToList();
         if (!powerUps.Any())
             throw new UnityException("Could not find powerup for " + tag);
@@ -47,13 +51,15 @@ public class PowerUpManager : MonoBehaviour
         Animation.Play();
     }
 
-    static void Reset()
+    public static void Reset()
     {
+        PowerupActive = false;
         PowerUpStartTime = Time.time;
         IsInvincible = false;
         IsSlow = false;
         IsFast = false;
         IsReverse = false;
+        TimeText.text = string.Empty;
     }
 
     static Type[] AllPowerUps()
@@ -70,6 +76,7 @@ public class PowerUpManager : MonoBehaviour
     {
         var diff = Time.time - PowerUpStartTime;
         var seconds = (int)diff % 60;
+        TimeText.text = string.Format("{0:d}", PowerUpTime - seconds);
         return seconds >= PowerUpTime;
     }
 }
