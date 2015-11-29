@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class HealthBar : MonoBehaviour {
 
@@ -27,6 +28,16 @@ public class HealthBar : MonoBehaviour {
         transform.localScale = new Vector3((float)Health / MaxHealth, transform.localScale.y, transform.localScale.z);
         transform.position = new Vector3(transform.position.x - Width / (MaxHealth * 2), transform.position.y,
             transform.position.z);
+    }
+
+    public bool HasFullHealth()
+    {
+        return Health == 5;
+    }
+
+    public bool HasLowHealth()
+    {
+        return Health == 1;
     }
 
     public bool IsDead()

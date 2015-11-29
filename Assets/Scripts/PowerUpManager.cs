@@ -9,7 +9,9 @@ public class PowerUpManager : MonoBehaviour
     public static bool IsSlow;
     public static bool IsFast;
     public static bool IsReverse;
+    public static bool IsPowerupActive;
     public static HealthBar HealthBar;
+    public static float PowerUpEndTime;
 
     static float PowerUpStartTime;
     const int PowerUpTime = 10;
@@ -17,7 +19,6 @@ public class PowerUpManager : MonoBehaviour
     static Text AnimationText;
     static Text TimeText;
     static PowerUp[] Powerups;
-    static bool PowerupActive;
 
     void Start()
     {
@@ -32,14 +33,17 @@ public class PowerUpManager : MonoBehaviour
 
     void Update()
     {
-        if (PowerupActive && PowerUpOver())
+        if (IsPowerupActive && PowerUpOver())
+        {
             Reset();
+            PowerupSpawner.ActivePowerups.Clear();
+        }
     }
 
     public static void SetPowerUp(string tag)
     {
         Reset();
-        PowerupActive = true;
+        IsPowerupActive = true;
         var powerUps = Powerups.Where(p => p.Tag == tag).ToList();
         if (!powerUps.Any())
             throw new UnityException("Could not find powerup for " + tag);
@@ -53,13 +57,14 @@ public class PowerUpManager : MonoBehaviour
 
     public static void Reset()
     {
-        PowerupActive = false;
+        IsPowerupActive = false;
         PowerUpStartTime = Time.time;
         IsInvincible = false;
         IsSlow = false;
         IsFast = false;
         IsReverse = false;
         TimeText.text = string.Empty;
+        PowerUpEndTime = Time.time;
     }
 
     static Type[] AllPowerUps()
