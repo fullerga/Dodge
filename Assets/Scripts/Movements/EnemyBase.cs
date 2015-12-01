@@ -5,31 +5,30 @@ public abstract class EnemyBase : MonoBehaviour
     const int XCameraRange = 9;
     const int YCameraRange = 9;
 
-    protected abstract HealthBar HealthBar { get; }
-    protected abstract Spawner Spawner { get; }
-    protected abstract void OnStart();
-    protected abstract void OnUpdate();
-    protected abstract float GetMovementSpeed();
-    protected abstract Vector3 GetMovementDirection();
+    protected HealthBar hb;
+    protected Spawner spawner;
 
-    void Start()
+    protected Vector3 up;
+
+    protected virtual void Start()
     {
-        OnStart();
-        var current = transform.position;
+        setObj();
+
+        Vector3 current = transform.position;
         float offset = Random.Range(-30, 30);
         if (current.x < 0)
             transform.Rotate(Vector3.forward, Mathf.Atan(current.y / current.x) * Mathf.Rad2Deg - 90 + offset);
-        if (current.x > 0)
+        else
             transform.Rotate(Vector3.forward, Mathf.Atan(current.y / current.x) * Mathf.Rad2Deg + 90 + offset);
+
+        up = transform.up;
     }
+    protected abstract void Update();
 
-
-    void Update()
+    protected void setObj()
     {
-        OnUpdate();
-        transform.position += GetMovementDirection() * Time.deltaTime * GetMovementSpeed() * GetSpeedMultiplier();
-        if (IsOutOfView())
-            DestroyEnemy();
+        hb = GameObject.Find("health").GetComponent<HealthBar>();
+        spawner = GameObject.Find("spawner").GetComponent<RandomSpawner>();
     }
 
     private float GetSpeedMultiplier()
@@ -41,17 +40,17 @@ public abstract class EnemyBase : MonoBehaviour
         return 1F;
     }
 
-    private bool IsOutOfView()
+    protected bool IsOutOfView()
     {
         return transform.position.x > XCameraRange || transform.position.x < -XCameraRange 
             || transform.position.y > YCameraRange || transform.position.y < -YCameraRange;
     }
 
-    private void DestroyEnemy()
+    protected void DestroyEnemy()
     {
         Destroy(gameObject);
-        Spawner.EnemyDied();
-        if (!HealthBar.IsDead())
+        spawner.EnemyDied();
+        if (!hb.IsDead())
             gameStats.points++;
     }
 }
