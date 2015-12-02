@@ -6,12 +6,20 @@ using Random = UnityEngine.Random;
 
 public class PowerupSpawner : MonoBehaviour
 {
-    const int LongestPowerupWaitInSeconds = 60;
-    const int CheckEveryNSeconds = 5;
+    const int LongestPowerupWaitInSeconds = 40;
+    const int CheckEveryNSeconds = 4;
 
-    public static List<Object> ActivePowerups;
+    static List<Object> ActivePowerups;
+
+    static Object PowerupLock = new Object();
     static HealthBar HealthBar;
     static float LastCheckTime;
+
+    public static void ClearActivePowerups()
+    {
+        lock (PowerupLock)
+            ActivePowerups.Clear();
+    }
 
     void Start()
     {
@@ -22,8 +30,11 @@ public class PowerupSpawner : MonoBehaviour
 
     void Update()
     {
-        if (!ActivePowerups.Any() && ShouldSpawnPowerup())
-            SpawnPowerup();
+        lock (PowerupLock)
+        {
+            if (!ActivePowerups.Any() && ShouldSpawnPowerup())
+                SpawnPowerup();
+        }
     }
 
     bool ShouldSpawnPowerup()
@@ -72,7 +83,9 @@ public class PowerupSpawner : MonoBehaviour
     void SpawnWithProbability(SpawnPowerupProbability probability)
     {
         var powerupPath = GetPowerupResourcePath(probability);
-        var powerup = Instantiate(Resources.Load(powerupPath), Vector3.zero, Quaternion.identity);
+        Vector2 pos = new Vector3(Random.value, Random.value);
+        pos = Camera.main.ViewportToWorldPoint(pos);
+        var powerup = Instantiate(Resources.Load(powerupPath), pos, Quaternion.identity);
         ActivePowerups.Add(powerup);
     }
 

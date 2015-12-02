@@ -36,7 +36,7 @@ public class PowerUpManager : MonoBehaviour
         if (IsPowerupActive && PowerUpOver())
         {
             Reset();
-            PowerupSpawner.ActivePowerups.Clear();
+            PowerupSpawner.ClearActivePowerups();
         }
     }
 
