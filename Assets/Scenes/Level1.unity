@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 206582283}
   - 114: {fileID: 206582282}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a3938dfae8cef419174726a8be3cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  square: {fileID: 118998, guid: 10e21258c16a8604ba9702e444e555fa, type: 2}
+  enemy: {fileID: 118998, guid: 10e21258c16a8604ba9702e444e555fa, type: 2}
 --- !u!4 &206582283
 Transform:
   m_ObjectHideFlags: 0
