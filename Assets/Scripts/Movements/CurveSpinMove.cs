@@ -11,7 +11,6 @@ public class CurveSpinMove : EnemyBase
     {
         up = Quaternion.Euler(0, 0, curveSize) * up;
 
-        float movementSpeed = 2F;
         transform.position += up * Time.deltaTime * movementSpeed;
         transform.Rotate(new Vector3(0, 0, rotationSpeed), Space.World);
 

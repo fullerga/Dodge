@@ -8,7 +8,6 @@ public class StraightSpinMove : EnemyBase
 
     protected override void Update()
     {
-        float movementSpeed = 2F;
         transform.position += up * Time.deltaTime * movementSpeed;
         transform.Rotate(new Vector3(0, 0, rotationSpeed), Space.World);
         if (IsOutOfView())

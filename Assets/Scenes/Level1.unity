@@ -109,10 +109,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 206582281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a3938dfae8cef419174726a8be3cac, type: 3}
+  m_Script: {fileID: 11500000, guid: b844a2230045c134e917ac8cc34fddd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 118998, guid: 10e21258c16a8604ba9702e444e555fa, type: 2}
 --- !u!4 &206582283
 Transform:
   m_ObjectHideFlags: 0

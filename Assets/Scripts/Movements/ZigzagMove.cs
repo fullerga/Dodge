@@ -11,7 +11,6 @@ public class ZigzagMove : EnemyBase
 
     protected override void Update()
     {
-        float movementSpeed = 2F;
         transform.position += transform.up * Time.deltaTime * movementSpeed;
         transform.Translate(Vector3.right * Time.deltaTime * zigzagSize*moveRight);
 

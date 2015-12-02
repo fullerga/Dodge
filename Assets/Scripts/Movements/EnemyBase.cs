@@ -4,6 +4,7 @@ public abstract class EnemyBase : MonoBehaviour
 {
     const int XCameraRange = 9;
     const int YCameraRange = 9;
+    protected float movementSpeed = 3F;
 
     protected HealthBar hb;
     protected Spawner spawner;

@@ -8,6 +8,7 @@ public class ZigzagSpinMove : EnemyBase
     float limit = 1;
     float total = 0;
     float rotationSpeed = 2;
+    int moveRight = 1;
 
     Vector3 right;
 
@@ -20,20 +21,16 @@ public class ZigzagSpinMove : EnemyBase
 
     protected override void Update()
     {
-        float movementSpeed = 2F;
         transform.position += up * Time.deltaTime * movementSpeed;
-        transform.position += right * Time.deltaTime * zigzagSize;
+        transform.Translate(right * Time.deltaTime * zigzagSize* moveRight);
         transform.Rotate(new Vector3(0, 0, rotationSpeed), Space.World);
-
 
         total += Time.deltaTime;
         if (total >= limit)
         {
             total = 0;
-
-            right = new Vector3(-right.x, -right.y, up.z);
+            right = new Vector3(-up.x, -up.y, up.z);
         }
-
         if (IsOutOfView())
             DestroyEnemy();
     }

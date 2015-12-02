@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using System;
 
 public abstract class Spawner: MonoBehaviour
 {
 
-    protected int numEnemies = 10;
     protected int numEnemCreated = 0;
     protected int numEnemDead = 0;
-
-    public GameObject enemy;
+    protected ArrayList enemies;
+    protected bool pickRandom; //should the enemies not be generated base on order in list
 
     protected abstract void Start();
     protected abstract void Update();
@@ -28,5 +29,37 @@ public abstract class Spawner: MonoBehaviour
         DontDestroyOnLoad(GameObject.Find("level"));
 
         gameStats.level++;
+    }
+
+    protected void checkIfDone()
+    {
+        if (enemies.Count == 0 && numEnemCreated == numEnemDead)
+        {
+            destroy();
+            Application.LoadLevel("Level"+gameStats.level);
+
+        }
+    }
+
+    protected string getNextEnemy()
+    {
+        print("ergwrg");
+
+        if (pickRandom==true)
+        {
+            System.Random r = new System.Random();
+            int pos = r.Next(0, 100); //for ints
+            print(pos);
+         
+            string temp = (string) enemies[pos];
+            enemies.RemoveAt(pos);
+            return temp;
+        }
+        else
+        {
+            string temp = (string)enemies[0];
+            enemies.RemoveAt(0);
+            return temp;
+        }
     }
 }
