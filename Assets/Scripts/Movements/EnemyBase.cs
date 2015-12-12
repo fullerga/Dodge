@@ -2,26 +2,15 @@
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    const int XCameraRange = 9;
-    const int YCameraRange = 9;
-    protected float movementSpeed = 3F;
 
+    protected float movementSpeed = 3F;
     protected HealthBar hb;
     protected Spawner spawner;
-
     protected Vector3 up;
 
     protected virtual void Start()
     {
         setObj();
-
-        Vector3 current = transform.position;
-        float offset = Random.Range(-30, 30);
-        if (current.x < 0)
-            transform.Rotate(Vector3.forward, Mathf.Atan(current.y / current.x) * Mathf.Rad2Deg - 90 + offset);
-        else
-            transform.Rotate(Vector3.forward, Mathf.Atan(current.y / current.x) * Mathf.Rad2Deg + 90 + offset);
-
         up = transform.up;
     }
     protected abstract void Update();
@@ -43,8 +32,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected bool IsOutOfView()
     {
-        return transform.position.x > XCameraRange || transform.position.x < -XCameraRange 
-            || transform.position.y > YCameraRange || transform.position.y < -YCameraRange;
+        return transform.position.x > WorldCoordinates.LargestDimension || transform.position.x < -WorldCoordinates.LargestDimension
+            || transform.position.y > WorldCoordinates.LargestDimension || transform.position.y < -WorldCoordinates.LargestDimension;
     }
 
     protected void DestroyEnemy()

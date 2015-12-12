@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using System;
 
 public abstract class Spawner: MonoBehaviour
 {
@@ -43,8 +42,6 @@ public abstract class Spawner: MonoBehaviour
 
     protected string getNextEnemy()
     {
-        print("ergwrg");
-
         if (pickRandom==true)
         {
             System.Random r = new System.Random();

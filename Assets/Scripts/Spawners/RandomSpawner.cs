@@ -2,7 +2,7 @@
 
 public class RandomSpawner : Spawner
 {
-    
+
     float timer = 0;
 
     protected override void Start()
@@ -15,7 +15,7 @@ public class RandomSpawner : Spawner
     protected override void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 1 && enemies.Count>0)
+        if (timer > 1 && enemies.Count > 0)
         {
             spawn();
             timer = 0;
@@ -27,11 +27,25 @@ public class RandomSpawner : Spawner
 
     protected override void spawn()
     {
-        int rad = 9;
-        float f = Random.Range(0, 2 * Mathf.PI);
-        float x = Mathf.Cos(f) * rad;
-        float y = Mathf.Sin(f) * rad;
-        string temp = getNextEnemy();
-        Instantiate(Resources.Load("enemies/"+temp), new Vector2(x, y), Quaternion.identity);
+        var radius = WorldCoordinates.LargestDimension * 0.75f;
+        var position = RandomPositionOnCircle(9f);
+        Instantiate(Resources.Load("enemies/" + getNextEnemy()), position, GetRotation(position));
+    }
+
+    Vector2 RandomPositionOnCircle(float radius)
+    {
+        var f = Random.Range(0, 2 * Mathf.PI);
+        var x = Mathf.Cos(f) * radius;
+        var y = Mathf.Sin(f) * radius;
+        return new Vector2(x, y);
+    }
+
+    Quaternion GetRotation(Vector2 pos)
+    {
+        var offset = Random.Range(-30, 30);
+        var angle = pos.x < 0 ?
+            Mathf.Atan(pos.y / pos.x) * Mathf.Rad2Deg - 90 + offset :
+            Mathf.Atan(pos.y / pos.x) * Mathf.Rad2Deg + 90 + offset;
+        return Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
