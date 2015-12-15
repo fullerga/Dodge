@@ -3,23 +3,16 @@
 public abstract class EnemyBase : MonoBehaviour
 {
 
+    public HealthBar hb;
+    public Spawner spawner;
     protected float movementSpeed = 3F;
-    protected HealthBar hb;
-    protected Spawner spawner;
     protected Vector3 up;
 
     protected virtual void Start()
     {
-        setObj();
         up = transform.up;
     }
     protected abstract void Update();
-
-    protected void setObj()
-    {
-        hb = GameObject.Find("health").GetComponent<HealthBar>();
-        spawner = GameObject.Find("spawner").GetComponent<RandomSpawner>();
-    }
 
     private float GetSpeedMultiplier()
     {
