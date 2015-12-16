@@ -11,7 +11,7 @@ public class ZigZaggerIntegrationTest : PositionDiffTest
         isPositiveDiff = true;
     }
 
-    protected override void OnUpdateWithDiffs(float diffX, float diffY, float diffZ)
+    protected override void OnUpdateWithDiffs(float diffX, float diffY, float diffZ, float diffRotation)
     {
         totalTime += Time.deltaTime;
         if(diffX > 0 && !isPositiveDiff)

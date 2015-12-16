@@ -5,8 +5,10 @@ public abstract class PositionTest : MonoBehaviour
     public int NumUpdates;
     public GameObject GameObject;
 
-    private int currentUpdate;
-    private Vector3 previousPosition;
+    int currentUpdate;
+    Vector3 previousPosition;
+    Quaternion previousRotation;
+
 
     void Start()
     {
@@ -20,7 +22,7 @@ public abstract class PositionTest : MonoBehaviour
         {
             if (currentUpdate == NumUpdates)
                 IntegrationTest.Pass(GameObject);
-            OnUpdateWithPositions(previousPosition, GetPosition());
+            OnUpdateWithPositions(previousPosition, GetPosition(), previousRotation, GetRotation());
             SetPrevious();
         }
         currentUpdate++;
@@ -29,6 +31,7 @@ public abstract class PositionTest : MonoBehaviour
     void SetPrevious()
     {
         previousPosition = GetPosition();
+        previousRotation = GetRotation();
     }
 
     Vector3 GetPosition()
@@ -36,5 +39,11 @@ public abstract class PositionTest : MonoBehaviour
         return GameObject.transform.position;
     }
 
-    protected abstract void OnUpdateWithPositions(Vector3 previousPosition, Vector3 currentPosition);
+    Quaternion GetRotation()
+    {
+        return GameObject.transform.rotation;
+    }
+
+    protected abstract void OnUpdateWithPositions(Vector3 previousPosition, Vector3 currentPosition,
+        Quaternion previousRotation, Quaternion currentRotation);
 }
