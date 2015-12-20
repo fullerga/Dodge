@@ -18,7 +18,7 @@ public abstract class PositionTest : MonoBehaviour
 
     void Update()
     {
-        if (currentUpdate != 0)
+        if (currentUpdate > 1)
         {
             if (currentUpdate == NumUpdates)
                 IntegrationTest.Pass(GameObject);

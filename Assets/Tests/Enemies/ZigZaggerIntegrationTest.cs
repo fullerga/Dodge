@@ -26,7 +26,7 @@ public class ZigZaggerIntegrationTest : PositionDiffTest
 
     void CheckTime()
     {
-        Fail.IfNotApproximately(totalTime, ZigzagMove.SecondsToSwitch, 0.1F, GameObject);
+        Fail.IfNotApproximately(totalTime, ZigZagger.SecondsToSwitch, 0.1F, GameObject);
         totalTime = 0;
         isPositiveDiff = !isPositiveDiff;
     }

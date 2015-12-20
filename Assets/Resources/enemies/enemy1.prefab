@@ -10,8 +10,9 @@ GameObject:
   - 4: {fileID: 429312}
   - 212: {fileID: 21254370}
   - 95: {fileID: 9525298}
-  - 114: {fileID: 11407078}
   - 60: {fileID: 6016398}
+  - 114: {fileID: 11462358}
+  - 114: {fileID: 11471640}
   m_Layer: 0
   m_Name: enemy1
   m_TagString: enemy
@@ -180,7 +181,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11407078
+--- !u!114 &11462358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88b311dc35e89b4f8e3e7e4c4ae8b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hb: {fileID: 0}
+  spawner: {fileID: 0}
+  EnemyMovement: {fileID: 0}
+--- !u!114 &11471640
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -209,7 +224,9 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_MinimumChartSize: 4
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
