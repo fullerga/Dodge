@@ -7,22 +7,23 @@ public class ZigZagger : EnemyMovement
 
     const float ZigZagLength = 1F;
     float TimeSinceLastChange;
-    int moveRight = 1;
+    int Direction;
 
     public ZigZagger()
     {
         TimeSinceLastChange = 0;
+        Direction = 1;
     }
 
     public override Vector3 PositionTransform(EnemyPosition position, float deltaTime)
     {
         var x = position.Up * deltaTime;
-        var t = x + (Vector3.right * Time.deltaTime * ZigZagLength * moveRight);
+        var t = x + (Vector3.right * Time.deltaTime * ZigZagLength * Direction);
         TimeSinceLastChange += deltaTime;
         if (TimeSinceLastChange >= SecondsToSwitch)
         {
             TimeSinceLastChange = 0;
-            moveRight = -moveRight;
+            Direction = -Direction;
         }
         return t;
     }
