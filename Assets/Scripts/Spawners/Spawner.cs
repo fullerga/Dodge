@@ -27,7 +27,7 @@ public abstract class Spawner: MonoBehaviour
         DontDestroyOnLoad(GameObject.Find("EventSystem"));
         DontDestroyOnLoad(GameObject.Find("level"));
 
-        gameStats.level++;
+        GameStats.level++;
     }
 
     protected void checkIfDone()
@@ -35,7 +35,7 @@ public abstract class Spawner: MonoBehaviour
         if (enemies.Count == 0 && numEnemCreated == numEnemDead)
         {
             destroy();
-            Application.LoadLevel("Level"+gameStats.level);
+            Application.LoadLevel("Level"+GameStats.level);
 
         }
     }

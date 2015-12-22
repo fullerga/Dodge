@@ -10,6 +10,6 @@ public class scoreDeathScreen : MonoBehaviour {
     {
         text = GetComponent<Text>();
 
-        text.text = gameStats.points.ToString();
+        text.text = GameStats.points.ToString();
     }
 }

@@ -14,7 +14,7 @@ public class level : MonoBehaviour
 
     void Update()
     {
-        text.text = gameStats.level.ToString();
+        text.text = GameStats.level.ToString();
     }
 }
 
