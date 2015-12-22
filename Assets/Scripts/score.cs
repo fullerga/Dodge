@@ -12,7 +12,7 @@ public class score : MonoBehaviour {
 	}
 	
 	void Update () {
-        text.text = gameStats.points.ToString();
+        text.text = GameStats.points.ToString();
 	}
 }
 
