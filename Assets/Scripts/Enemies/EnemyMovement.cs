@@ -4,6 +4,7 @@ public abstract class EnemyMovement : MonoBehaviour
 {
     EnemyController EnemyController;
     protected Vector3 up;
+    public float speed;
 
     void Start()
     {

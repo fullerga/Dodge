@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Level2 : RandomSpawner
+public class Level5 : RandomSpawner
 {
 
     // Use this for initialization
@@ -13,7 +13,7 @@ public class Level2 : RandomSpawner
 
         for (int i = 0; i < 10; i++)
         {
-            enemies.Add("straightFast");
+            enemies.Add("curvedFast");
         }
 
     }

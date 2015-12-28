@@ -30,7 +30,7 @@ public class EnemyControllerTest : MonoBehaviour
     {
         NoPowerupActive();
         Controller.Update(GameObject, DeltaTime);
-        Assert.AreEqual(GameObject.transform.position, Vector3.one * EnemyController.MovementSpeed);
+        Assert.AreEqual(GameObject.transform.position, Vector3.one);
     }
 
     [Test]
@@ -38,7 +38,7 @@ public class EnemyControllerTest : MonoBehaviour
     {
         SlowPowerupActive();
         Controller.Update(GameObject, DeltaTime);
-        Assert.AreEqual(GameObject.transform.position, Vector3.one * EnemyController.MovementSpeed * EnemyController.SlowMultiplier);
+        Assert.AreEqual(GameObject.transform.position, Vector3.one * EnemyController.SlowMultiplier);
     }
 
     [Test]
@@ -46,7 +46,7 @@ public class EnemyControllerTest : MonoBehaviour
     {
         FastPowerupActive();
         Controller.Update(GameObject, DeltaTime);
-        Assert.AreEqual(GameObject.transform.position, Vector3.one * EnemyController.MovementSpeed * EnemyController.FastMultiplier);
+        Assert.AreEqual(GameObject.transform.position, Vector3.one * EnemyController.FastMultiplier);
     }
 
     [Test]

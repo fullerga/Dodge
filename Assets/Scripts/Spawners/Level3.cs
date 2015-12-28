@@ -11,13 +11,9 @@ public class Level3 : RandomSpawner
 
         enemies = new ArrayList();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
-            enemies.Add("enemy2");
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            enemies.Add("enemy3");
+            enemies.Add("straightSpin");
         }
 
     }
