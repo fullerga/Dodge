@@ -3,12 +3,14 @@
 public abstract class EnemyMovement : MonoBehaviour
 {
     EnemyController EnemyController;
+    protected Vector3 up;
 
     void Start()
     {
         var healthbar = FindGameObject<HealthBar>("health");
         var spawner = FindGameObject<RandomSpawner>("spawner");
         EnemyController = new EnemyController(this, spawner, healthbar);
+        up = transform.up;
     }
 
     void Update()

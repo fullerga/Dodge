@@ -13,11 +13,11 @@ public class Level3 : RandomSpawner
 
         for (int i = 0; i < 5; i++)
         {
-            enemies.Add("enemy3");
+            enemies.Add("enemy2");
         }
         for (int i = 0; i < 5; i++)
         {
-            enemies.Add("enemy4");
+            enemies.Add("enemy3");
         }
 
     }

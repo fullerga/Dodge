@@ -27,7 +27,7 @@ public class RandomSpawner : Spawner
 
     protected override void spawn()
     {
-        var radius = WorldCoordinates.LargestDimension * 0.75f;
+        //var radius = WorldCoordinates.LargestDimension * 0.75f;
         var position = RandomPositionOnCircle(9f);
         Instantiate(Resources.Load("enemies/" + getNextEnemy()), position, GetRotation(position));
     }

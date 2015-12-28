@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
 
-public class StraightSpinner : EnemyMovement
+public class CurvedSpinner : EnemyMovement
 {
-    public const float RotationInDegrees = 2;
-
     public override Vector3 PositionTransform(EnemyPosition position, float deltaTime)
     {
+        up = Quaternion.Euler(0, 0, .3F) * up;
         return up * deltaTime;
     }
 
     public override Vector3 RotationTransform(EnemyPosition position, float deltaTime)
     {
-        return new Vector3(0, 0, RotationInDegrees);
+        return new Vector3(0, 0, 100 * deltaTime);
     }
 }
