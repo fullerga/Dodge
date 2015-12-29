@@ -17,9 +17,9 @@ public class ZigZagger : EnemyMovement
 
     public override Vector3 PositionTransform(EnemyPosition position, float deltaTime)
     {
-        Vector3 right = new Vector3(up.y, -up.x, 0);
-        var x = position.Up * deltaTime;
-        var t = x + (right * Time.deltaTime * ZigZagLength * Direction);
+        Vector3 perpendicular = new Vector3(up.y, -up.x, 0);
+        Vector3 x = up * deltaTime;
+        Vector3 t = x + (perpendicular * Time.deltaTime * ZigZagLength * Direction);
         TimeSinceLastChange += deltaTime;
         if (TimeSinceLastChange >= SecondsToSwitch)
         {

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class scoreDeathScreen : MonoBehaviour {
+public class levelDeathScreen : MonoBehaviour {
 
     private Text text;
 
@@ -10,6 +10,6 @@ public class scoreDeathScreen : MonoBehaviour {
     {
         text = GetComponent<Text>();
 
-        text.text = GameStats.points.ToString();
+        text.text = GameStats.level.ToString();
     }
 }

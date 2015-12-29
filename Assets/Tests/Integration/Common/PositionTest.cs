@@ -18,8 +18,9 @@ public abstract class PositionTest : MonoBehaviour
 
     void Update()
     {
-        if (currentUpdate > 1)
+        if (currentUpdate > 5)
         {
+            //print(GetPosition());
             if (currentUpdate == NumUpdates)
                 IntegrationTest.Pass(GameObject);
             OnUpdateWithPositions(previousPosition, GetPosition(), previousRotation, GetRotation());
