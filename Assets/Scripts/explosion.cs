@@ -14,6 +14,8 @@ public class explosion : MonoBehaviour {
             Destroy(GameObject.Find("Canvas"));
             Destroy(GameObject.Find("EventSystem"));
             Destroy(GameObject.Find("level"));
+            Destroy(GameObject.Find("topBar"));
+            Destroy(GameObject.Find("powerupSpawner"));
             Destroy(gameObject);
 			Application.LoadLevel("GameOver");
         }

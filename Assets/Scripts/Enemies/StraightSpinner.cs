@@ -6,7 +6,7 @@ public class StraightSpinner : EnemyMovement
 
     public override Vector3 PositionTransform(EnemyPosition position, float deltaTime)
     {
-        return Vector3.up * deltaTime;
+        return up * deltaTime;
     }
 
     public override Vector3 RotationTransform(EnemyPosition position, float deltaTime)

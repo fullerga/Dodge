@@ -2,7 +2,6 @@
 
 public class EnemyController
 {
-    public const float MovementSpeed = 3F;
     public const float SlowMultiplier = 0.5F;
     public const float FastMultiplier = 2.0F;
 
@@ -29,7 +28,7 @@ public class EnemyController
         else
         {
             var position = EnemyPosition.FromTransform(obj.transform);
-            obj.transform.position += EnemyMovement.PositionTransform(position, deltaTime) * MovementSpeed * GetSpeedMultiplier();
+            obj.transform.position += EnemyMovement.PositionTransform(position, deltaTime) * EnemyMovement.speed * GetSpeedMultiplier();
             obj.transform.Rotate(EnemyMovement.RotationTransform(position, deltaTime));
         }
     }

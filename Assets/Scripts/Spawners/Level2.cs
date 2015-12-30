@@ -3,22 +3,12 @@ using System.Collections;
 
 public class Level2 : RandomSpawner
 {
-
-    // Use this for initialization
     protected override void Start()
     {
-
-
         enemies = new ArrayList();
-
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
-            enemies.Add("enemy1");
+            enemies.Add("straightFast");
         }
-        for (int i = 0; i < 5; i++)
-        {
-            enemies.Add("enemy2");
-        }
-
     }
 }
