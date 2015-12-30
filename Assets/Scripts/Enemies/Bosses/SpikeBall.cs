@@ -30,12 +30,15 @@ public class SpikeBall : EnemyMovement
     void shootSpikes()
     {
         Quaternion tempRot = transform.rotation;
-        Vector3 tempAdj = transform.position.normalized;
+        Quaternion tempPos = new Quaternion(0, 0, 1, 0);
+        Vector3 tempAdj = transform.up;
 
         for(int i=0; i<8; i++)
         {
-            Instantiate(Resources.Load("enemies/spike"), transform.position+(tempRot*tempAdj), tempRot);
-            tempRot *= Quaternion.Euler(new Vector3(0, 0, 45));
+            Debug.Log(tempPos * tempAdj);
+            Instantiate(Resources.Load("enemies/spike"), transform.position-(tempPos*tempAdj), tempRot);
+            tempRot *= Quaternion.Euler(0, 0, 45);
+            tempPos *= Quaternion.Euler(0, 0, 45);
         }
 
         EnemyController.getSpawner().enemyCreated(8);
