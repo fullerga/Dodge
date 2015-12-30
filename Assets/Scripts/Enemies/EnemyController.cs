@@ -21,7 +21,7 @@ public class EnemyController
         if (IsOutOfView(obj.transform.position))
         {
             GameObject.DestroyImmediate(obj);
-            Spawner.EnemyDied();    // TODO move enemy count into some controlled global state
+            Spawner.enemyDied();    // TODO move enemy count into some controlled global state
             if (!HealthBar.IsDead())    // TODO health does not make sense to be on a healthbar but instead a player a part of the global state
                 GameStats.points++;
         }
@@ -46,5 +46,10 @@ public class EnemyController
     {
         return position.x >= WorldCoordinates.LargestDimension || position.x <= -WorldCoordinates.LargestDimension
             || position.y >= WorldCoordinates.LargestDimension || position.y <= -WorldCoordinates.LargestDimension;
+    }
+
+    public Spawner getSpawner()
+    {
+        return Spawner;
     }
 }

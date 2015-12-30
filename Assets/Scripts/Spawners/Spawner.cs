@@ -13,9 +13,14 @@ public abstract class Spawner: MonoBehaviour
     protected abstract void Update();
     protected abstract void spawn();
 
-    public void EnemyDied()
+    public void enemyDied()
     {
         numEnemDead++;
+    }
+
+    public void enemyCreated(int num)
+    {
+        numEnemCreated += num;
     }
 
     protected void destroy()

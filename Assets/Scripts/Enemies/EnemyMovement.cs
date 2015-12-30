@@ -2,7 +2,7 @@
 
 public abstract class EnemyMovement : MonoBehaviour
 {
-    EnemyController EnemyController;
+    protected EnemyController EnemyController;
     protected Vector3 up;
     public float speed = 1;
 
@@ -14,7 +14,7 @@ public abstract class EnemyMovement : MonoBehaviour
         up = transform.up;
     }
 
-    void Update()
+    public virtual void Update()
     {
         EnemyController.Update(gameObject, Time.deltaTime);
     }
