@@ -4,7 +4,6 @@
     {
         Fail.IfNotZero(diffX, GameObject, "x");
         Fail.IfNotZero(diffZ, GameObject, "z");
-        //print(diffY);
         Fail.IfNotPositive(diffY, GameObject, "y");
     }
 }
