@@ -10,7 +10,6 @@ public class PowerupSpawner : MonoBehaviour
     const int CheckEveryNSeconds = 4;
 
     static List<Object> ActivePowerups;
-
     static Object PowerupLock = new Object();
     static HealthBar HealthBar;
     static float LastCheckTime;
@@ -83,7 +82,7 @@ public class PowerupSpawner : MonoBehaviour
     void SpawnWithProbability(SpawnPowerupProbability probability)
     {
         var powerupPath = GetPowerupResourcePath(probability);
-        Vector2 pos = new Vector3(Random.value, Random.value);
+        var pos = new Vector2(Random.value, Random.value);
         pos = Camera.main.ViewportToWorldPoint(pos);
         var powerup = Instantiate(Resources.Load(powerupPath), pos, Quaternion.identity);
         ActivePowerups.Add(powerup);
@@ -92,7 +91,6 @@ public class PowerupSpawner : MonoBehaviour
     string GetPowerupResourcePath(SpawnPowerupProbability p)
     {
         var random = Random.value;
-        print(random);
         if (random <= p.FasterEnemy)
             return "Powerups/FasterEnemyPowerup";
         if (random <= p.FasterEnemy + p.Health)
