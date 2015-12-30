@@ -34,10 +34,7 @@ public class PowerUpManager : MonoBehaviour
     void Update()
     {
         if (IsPowerupActive && PowerUpOver())
-        {
             Reset();
-            PowerupSpawner.ClearActivePowerups();
-        }
     }
 
     public static void SetPowerUp(string tag)
@@ -65,6 +62,7 @@ public class PowerUpManager : MonoBehaviour
         IsReverse = false;
         TimeText.text = string.Empty;
         PowerUpEndTime = Time.time;
+        PowerupSpawner.ClearActivePowerups();
     }
 
     static Type[] AllPowerUps()
