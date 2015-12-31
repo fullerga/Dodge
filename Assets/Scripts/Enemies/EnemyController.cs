@@ -29,7 +29,7 @@ public class EnemyController
         {
             var position = EnemyPosition.FromTransform(obj.transform);
             obj.transform.position += EnemyMovement.PositionTransform(position, deltaTime) * EnemyMovement.speed * GetSpeedMultiplier();
-            obj.transform.Rotate(EnemyMovement.RotationTransform(position, deltaTime));
+            obj.transform.rotation = EnemyMovement.RotationTransform(position, deltaTime);
         }
     }
 

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class CurvedSpinnerIntegrationTest : PositionDiffTest
+﻿public class CurvedSpinnerIntegrationTest : PositionDiffTest
 {
     protected override void OnUpdateWithDiffs(float diffX, float diffY, float diffZ, float diffRotation)
     {

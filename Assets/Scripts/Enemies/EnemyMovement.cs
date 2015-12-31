@@ -27,6 +27,12 @@ public abstract class EnemyMovement : MonoBehaviour
         return obj.GetComponent<T>();
     }
 
-    public abstract Vector3 PositionTransform(EnemyPosition position, float deltaTime);
-    public abstract Vector3 RotationTransform(EnemyPosition position, float deltaTime);
+    public virtual Vector3 PositionTransform(EnemyPosition position, float deltaTime)
+    {
+        return Vector3.zero;
+    }
+    public virtual Quaternion RotationTransform(EnemyPosition position, float deltaTime)
+    {
+        return position.Rotation;
+    }
 }

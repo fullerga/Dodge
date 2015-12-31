@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 
 public class ZigZagger : EnemyMovement
 {
@@ -27,10 +26,5 @@ public class ZigZagger : EnemyMovement
             Direction = -Direction;
         }
         return t;
-    }
-
-    public override Vector3 RotationTransform(EnemyPosition position, float deltaTime)
-    {
-        return Vector3.zero;
     }
 }
