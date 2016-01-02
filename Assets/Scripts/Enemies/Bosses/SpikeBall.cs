@@ -23,7 +23,6 @@ public class SpikeBall : EnemyMovement
         if (timer>=3)
         {
             shootSpikes();
-            timer = -50;
         }
     }
 
@@ -41,7 +40,7 @@ public class SpikeBall : EnemyMovement
             tempPos *= Quaternion.Euler(0, 0, 45);
         }
 
-        EnemyController.getSpawner().enemyCreated(8);
+        spawner.EnemyCreated(8);
         Instantiate(Resources.Load("enemies/ballNoSpikes"), transform.position, transform.rotation);
         Destroy(gameObject);
     }
