@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     private Vector3 v3Offset;
     private Plane plane;
     private HealthBar healthBar;
+    private Color hitColor = new Color(1F, .15F, .15F, 1);
 
     void Start()
     {
@@ -53,7 +55,13 @@ public class Player : MonoBehaviour
     private void HandlePlayerHit()
     {
         healthBar.SubHealth();
-        if (!healthBar.IsDead()) return;
+        if (!healthBar.IsDead()) {
+            
+            if(GetComponent<Renderer>().material.color!= hitColor)
+                StartCoroutine("wait");
+            
+            return;
+        }
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
@@ -62,5 +70,13 @@ public class Player : MonoBehaviour
     {
         PowerUpManager.SetPowerUp(col.gameObject.tag);
         Destroy(col.gameObject);
+    }
+
+    IEnumerator wait()
+    {
+        Color32 c = GetComponent<Renderer>().material.color;
+        GetComponent<Renderer>().material.color = hitColor;
+        yield return new WaitForSeconds(.3F);
+        GetComponent<Renderer>().material.color = c;
     }
 }

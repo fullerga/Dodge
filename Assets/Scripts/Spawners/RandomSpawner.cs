@@ -17,7 +17,7 @@ public class RandomSpawner : Spawner
         timer += Time.deltaTime;
         if (timer > 1 && enemies.Count > 0)
         {
-            spawn();
+            Spawn();
             timer = 0;
             numEnemCreated++;
         }
@@ -25,7 +25,7 @@ public class RandomSpawner : Spawner
         checkIfDone();
     }
 
-    protected override void spawn()
+    protected override void Spawn()
     {
         var position = RandomPositionOnCircle(9f);
         Instantiate(Resources.Load("enemies/" + getNextEnemy()), position, GetRotation(position));

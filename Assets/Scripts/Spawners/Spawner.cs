@@ -11,14 +11,19 @@ public abstract class Spawner: MonoBehaviour
 
     protected abstract void Start();
     protected abstract void Update();
-    protected abstract void spawn();
+    protected abstract void Spawn();
 
     public void EnemyDied()
     {
         numEnemDead++;
     }
 
-    protected void destroy()
+    public void EnemyCreated(int num)
+    {
+        numEnemCreated += num;
+    }
+
+    protected void Destroy()
     {
         DontDestroyOnLoad(GameObject.Find("Player"));
         DontDestroyOnLoad(GameObject.Find("health"));
@@ -36,7 +41,7 @@ public abstract class Spawner: MonoBehaviour
     {
         if (enemies.Count == 0 && numEnemCreated == numEnemDead)
         {
-            destroy();
+            Destroy();
             Application.LoadLevel("Level"+GameStats.level);
 
         }
