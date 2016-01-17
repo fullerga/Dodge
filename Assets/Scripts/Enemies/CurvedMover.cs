@@ -7,8 +7,8 @@ public class CurvedMover : EnemyMovement
         return position.Up * deltaTime;
     }
 
-    public override Vector3 RotationTransform(EnemyPosition position, float deltaTime)
+    public override Quaternion RotationTransform(EnemyPosition position, float deltaTime)
     {
-        return new Vector3(0, 0, 10 * deltaTime);
+        return position.Rotation.Rotate(0, 0, 10 * deltaTime);
     }
 }

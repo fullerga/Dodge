@@ -6,9 +6,4 @@ public class StraightMover : EnemyMovement
     {
         return position.Up * deltaTime;
     }
-
-    public override Vector3 RotationTransform(EnemyPosition position, float deltaTime)
-    {
-        return Vector3.zero;
-    }
 }
