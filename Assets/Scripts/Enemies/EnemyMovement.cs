@@ -42,7 +42,7 @@ public abstract class EnemyMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "Player")
+        if (col.gameObject.name == "player")
         {
             fading = true;
         }
