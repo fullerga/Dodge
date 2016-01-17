@@ -10,10 +10,17 @@ public class Player : MonoBehaviour
     private Plane plane;
     private HealthBar healthBar;
     private Color hitColor = new Color(1F, .15F, .15F, 1);
+    public float screenWidth;
+    public float screenHeight;
+
 
     void Start()
     {
         healthBar = GameObject.Find("health").GetComponent<HealthBar>();
+
+        Camera camera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        screenWidth = camera.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - .87F;
+        screenHeight = camera.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y - .87F;
     }
 
 
@@ -46,9 +53,7 @@ public class Player : MonoBehaviour
 
     private void HandleCollisionWithEnemy(Collision2D col)
     {
-        if (PowerUpManager.IsInvincible)
-            Destroy(col.gameObject);
-        else
+        if (!PowerUpManager.IsInvincible)
             HandlePlayerHit();
     }
 
@@ -78,5 +83,25 @@ public class Player : MonoBehaviour
         GetComponent<Renderer>().material.color = hitColor;
         yield return new WaitForSeconds(.3F);
         GetComponent<Renderer>().material.color = c;
+    }
+
+    void LateUpdate()
+    {
+        if (transform.position.x > screenWidth)
+        {
+            transform.position = new Vector3(screenWidth, transform.position.y, 0);
+        }
+        if (transform.position.x < -screenWidth)
+        {
+            transform.position = new Vector3(-screenWidth, transform.position.y, 0);
+        }
+        if (transform.position.y > screenHeight)
+        {
+            transform.position = new Vector3(transform.position.x, screenHeight, 0);
+        }
+        if (transform.position.y < -screenHeight)
+        {
+            transform.position = new Vector3(transform.position.x, -screenHeight, 0);
+        }
     }
 }

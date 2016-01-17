@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 428038}
   - 212: {fileID: 21202260}
-  - 50: {fileID: 5095444}
   - 58: {fileID: 5854050}
   - 114: {fileID: 11498360}
+  - 50: {fileID: 5079664}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5095444
+--- !u!50 &5079664
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
@@ -59,7 +59,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.39999998
+  m_Radius: 1.70000005
 --- !u!114 &11498360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +72,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 122534, guid: 97ca005d756847140aacba91356694fa, type: 2}
+  screenWidth: 0
+  screenHeight: 0
 --- !u!212 &21202260
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -116,6 +118,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

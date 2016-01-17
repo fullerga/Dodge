@@ -8,7 +8,7 @@ public class Level1 : RandomSpawner
         enemies = new ArrayList();
         for(int i=0; i<10; i++)
         {
-            enemies.Add("straightSlow");
+            enemies.Add("spikeBall");
         }
     }
 }
