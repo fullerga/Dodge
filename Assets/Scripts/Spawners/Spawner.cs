@@ -53,7 +53,6 @@ public abstract class Spawner: MonoBehaviour
         {
             System.Random r = new System.Random();
             int pos = r.Next(0, 100); //for ints
-            print(pos);
          
             string temp = (string) enemies[pos];
             enemies.RemoveAt(pos);

@@ -8,8 +8,8 @@ public class CurvedSpinner : EnemyMovement
         return up * deltaTime;
     }
 
-    public override Vector3 RotationTransform(EnemyPosition position, float deltaTime)
+    public override Quaternion RotationTransform(EnemyPosition position, float deltaTime)
     {
-        return new Vector3(0, 0, 100 * deltaTime);
+        return position.Rotation.Rotate(0, 0, 100 * deltaTime);
     }
 }

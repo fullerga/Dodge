@@ -15,7 +15,7 @@ public class EnemyControllerTest : MonoBehaviour
         GameObject = new GameObject();
         var movement = Substitute.For<EnemyMovement>();
         movement.PositionTransform(Arg.Any<EnemyPosition>(), DeltaTime).ReturnsForAnyArgs(Vector3.one);
-        movement.RotationTransform(Arg.Any<EnemyPosition>(), DeltaTime).ReturnsForAnyArgs(Vector3.one);
+        movement.RotationTransform(Arg.Any<EnemyPosition>(), DeltaTime).ReturnsForAnyArgs(Quaternion.identity);
         Controller = new EnemyController(movement, new RandomSpawner(), new HealthBar());
     }
 

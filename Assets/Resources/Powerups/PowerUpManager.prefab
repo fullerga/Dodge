@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11498576}
   - 114: {fileID: 11434186}
   m_Layer: 0
-  m_Name: PowerupManager
+  m_Name: PowerUpManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
