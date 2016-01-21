@@ -10,9 +10,8 @@ public class Player : MonoBehaviour
     private Plane plane;
     private HealthBar healthBar;
     private Color hitColor = new Color(1F, .15F, .15F, 1);
-    public float screenWidth;
-    public float screenHeight;
-
+    private float screenWidth;
+    private float screenHeight;
 
     void Start()
     {
@@ -88,20 +87,12 @@ public class Player : MonoBehaviour
     void LateUpdate()
     {
         if (transform.position.x > screenWidth)
-        {
             transform.position = new Vector3(screenWidth, transform.position.y, 0);
-        }
         if (transform.position.x < -screenWidth)
-        {
             transform.position = new Vector3(-screenWidth, transform.position.y, 0);
-        }
         if (transform.position.y > screenHeight)
-        {
             transform.position = new Vector3(transform.position.x, screenHeight, 0);
-        }
         if (transform.position.y < -screenHeight)
-        {
             transform.position = new Vector3(transform.position.x, -screenHeight, 0);
-        }
     }
 }
