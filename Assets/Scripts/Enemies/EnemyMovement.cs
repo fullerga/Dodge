@@ -6,6 +6,8 @@ public abstract class EnemyMovement : MonoBehaviour
     protected Vector3 up;
     public float speed = 1;
     protected Spawner spawner;
+    bool fading = false;
+    float fadeSpeed = .1F;
 
     void Start()
     {
@@ -18,6 +20,15 @@ public abstract class EnemyMovement : MonoBehaviour
     public virtual void Update()
     {
         EnemyController.Update(gameObject, Time.deltaTime);
+
+        if (fading)
+        {
+            Color c = GetComponent<Renderer>().material.color;
+            GetComponent<Renderer>().material.color = new Color(c.r, c.g, c.b, c.a - fadeSpeed);
+
+            if (c.a <= 0)
+                Destroy(gameObject);
+        }
     }
 
     private T FindGameObject<T>(string name)
@@ -26,6 +37,12 @@ public abstract class EnemyMovement : MonoBehaviour
         if (obj == null)
             return default(T);
         return obj.GetComponent<T>();
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name == "player")
+            fading = true;
     }
 
     public virtual Vector3 PositionTransform(EnemyPosition position, float deltaTime)

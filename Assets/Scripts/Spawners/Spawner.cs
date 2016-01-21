@@ -31,7 +31,6 @@ public abstract class Spawner: MonoBehaviour
         DontDestroyOnLoad(GameObject.Find("Canvas"));
         DontDestroyOnLoad(GameObject.Find("EventSystem"));
         DontDestroyOnLoad(GameObject.Find("level"));
-        DontDestroyOnLoad(GameObject.Find("topBar"));
         DontDestroyOnLoad(GameObject.Find("PowerupManager"));
         PowerUpManager.Reset();
         GameStats.level++;
