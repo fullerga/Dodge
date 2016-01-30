@@ -25,7 +25,7 @@ public abstract class Spawner: MonoBehaviour
 
     protected void Destroy()
     {
-        DontDestroyOnLoad(GameObject.Find("Player"));
+        DontDestroyOnLoad(GameObject.Find("player"));
         DontDestroyOnLoad(GameObject.Find("health"));
         DontDestroyOnLoad(GameObject.Find("healthBarEmpty"));
         DontDestroyOnLoad(GameObject.Find("Canvas"));

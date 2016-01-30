@@ -27,7 +27,10 @@ public abstract class EnemyMovement : MonoBehaviour
             GetComponent<Renderer>().material.color = new Color(c.r, c.g, c.b, c.a - fadeSpeed);
 
             if (c.a <= 0)
+            {
+                spawner.EnemyDied();
                 Destroy(gameObject);
+            }
         }
     }
 
